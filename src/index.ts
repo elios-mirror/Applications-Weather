@@ -23,7 +23,7 @@ export default class Weather {
     console.log('Weather started.');
 
     this.widget = sdk.createWidget();
-    
+
     let barometer = require("./svg/wi-barometer.svg");
     let wind = require("./svg/wi-strong-wind.svg");
     let humidity = require("./svg/wi-humidity.svg");
@@ -81,17 +81,20 @@ export default class Weather {
           }
 
         }
-        if (this.selectedDisplay == '1')
-          this.widget.html("<div style=\"text-align:center;width:fit-content\"><p style=\"font-weight:bold\">" + obj.name + "</p><p style=\"font-weight:bolder;font-size:30px\">" + Math.round(obj.main.temp) + "°C</p><p>" + obj.weather[0].description + "</p></div>");
-        else if (this.selectedDisplay == '2')
-          this.widget.html("<div style=\"text-align:center;width:fit-content\"><p style=\"font-weight:bold\">" + obj.name + "</p><img style=\"float:left;height:60px;\" src=\"" + svgWeather + "\"/><p style=\"font-weight:bolder;font-size:30px;float:left;line-height:2\">" + Math.round(obj.main.temp) + "°C</p></div>");
-        else if (this.selectedDisplay == '3') {
-          this.widget.html("<div style=\"text-align:center;width:100%;height:80px\"><p style=\"font-weight:bold\">" + obj.name + "</p><div style=\"width: fit-content;margin-left:auto;margin-right:auto;display:block;height:56px;margin-top:-10px\"><img style=\"float:left;height:60px;width:60px\" src=\"" + svgWeather + "\"/><p style=\"font-weight:bolder;font-size:30px;float:left;line-height:2;margin-right:5px\">" + Math.round(obj.main.temp) + "°C</p></div></div>"
-            + "<div style=\"width:fit-content;line-height:2.4;height:35px;margin-left:auto;margin-right:auto;display:block;margin-top:-6px;\"><img style=\"float:left;height:35px;\" src=\"" + barometer + "\"/><p style=\"float:left\">" + obj.main.pressure + " hPa</p><img style=\"float:left;height:35px;\" src=\"" + humidity + "\"/><p style=\"float:left\">" + obj.main.humidity + " %</p></div>"
-            + "<div style=\"width:fit-content;line-height:2.4;height:35px;margin-left:auto;margin-right:auto;display:block;margin-top:-6px;\"><img style=\"float:left;height:35px;\" src=\"" + wind + "\"><p style=\"float:left\">" + obj.wind.speed + " km/h</p></div>");
-        }
-        else
-          this.widget.html("<div style=\"text-align:center;width:fit-content\"><p style=\"font-weight:bold\">" + obj.name + "</p><p style=\"font-weight:bolder;font-size:30px\">" + Math.round(obj.main.temp) + "°C</p><p>" + obj.weather[0].description + "</p></div>");
+        setInterval(() => {
+          if (this.selectedDisplay == '1')
+            this.widget.html("<div style=\"text-align:center;width:fit-content\"><p style=\"font-weight:bold\">" + obj.name + "</p><p style=\"font-weight:bolder;font-size:30px\">" + Math.round(obj.main.temp) + "°C</p><p>" + obj.weather[0].description + "</p></div>");
+          else if (this.selectedDisplay == '2')
+            this.widget.html("<div style=\"text-align:center;width:fit-content\"><p style=\"font-weight:bold\">" + obj.name + "</p><img style=\"float:left;height:60px;\" src=\"" + svgWeather + "\"/><p style=\"font-weight:bolder;font-size:30px;float:left;line-height:2\">" + Math.round(obj.main.temp) + "°C</p></div>");
+          else if (this.selectedDisplay == '3') {
+            this.widget.html("<div style=\"text-align:center;width:100%;height:80px\"><p style=\"font-weight:bold\">" + obj.name + "</p><div style=\"width: fit-content;margin-left:auto;margin-right:auto;display:block;height:56px;margin-top:-10px\"><img style=\"float:left;height:60px;width:60px\" src=\"" + svgWeather + "\"/><p style=\"font-weight:bolder;font-size:30px;float:left;line-height:2;margin-right:5px\">" + Math.round(obj.main.temp) + "°C</p></div></div>"
+              + "<div style=\"width:fit-content;line-height:2.4;height:35px;margin-left:auto;margin-right:auto;display:block;margin-top:-6px;\"><img style=\"float:left;height:35px;\" src=\"" + barometer + "\"/><p style=\"float:left\">" + obj.main.pressure + " hPa</p><img style=\"float:left;height:35px;\" src=\"" + humidity + "\"/><p style=\"float:left\">" + obj.main.humidity + " %</p></div>"
+              + "<div style=\"width:fit-content;line-height:2.4;height:35px;margin-left:auto;margin-right:auto;display:block;margin-top:-6px;\"><img style=\"float:left;height:35px;\" src=\"" + wind + "\"><p style=\"float:left\">" + obj.wind.speed + " km/h</p></div>");
+          }
+          else
+            this.widget.html("<div style=\"text-align:center;width:fit-content\"><p style=\"font-weight:bold\">" + obj.name + "</p><p style=\"font-weight:bolder;font-size:30px\">" + Math.round(obj.main.temp) + "°C</p><p>" + obj.weather[0].description + "</p></div>");
+        }, 1000);
+
       }
     });
   }
