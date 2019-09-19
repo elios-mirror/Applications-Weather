@@ -28,7 +28,7 @@ export default class Weather {
     let wind = require("./svg/wi-strong-wind.svg");
     let humidity = require("./svg/wi-humidity.svg");
 
-    Request("http://api.openweathermap.org/data/2.5/weather?q=Barcelona,ES&appid=0b903424166bfaef00a52f2945826e04&units=metric", (error: any, response: any, body: any) => {
+    Request("http://api.openweathermap.org/data/2.5/weather?q=Paris,FR&appid=0b903424166bfaef00a52f2945826e04&units=metric", (error: any, response: any, body: any) => {
       if (error) { console.log('error:', error); }
       else {
 
