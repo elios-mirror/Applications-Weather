@@ -1,0 +1,30 @@
+[
+  {
+    "type": "input",
+    "name": "location",
+    "placeholder": "Location",
+    "validator": "text",
+    "required": true
+  },
+  {
+    "type": "dropdown",
+    "name": "display",
+    "placeholder": "Display",
+    "validator": "text",
+    "required": true,
+    "values": [
+      {
+        "text": "Simple",
+        "value": 1
+      },
+      {
+        "text": "Detailed",
+        "value": 2
+      },
+      {
+        "text": "Full",
+        "value": 3
+      }
+    ]
+  }
+]
