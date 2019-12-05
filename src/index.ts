@@ -102,7 +102,6 @@ export default class Weather {
     this.widget = sdk.createWidget();
 
     sdk.config().subscribe((config:any) => {
-      console.log('config is ', config);
       if (config.location)
       location = config.location;
       if (config.display)
@@ -113,7 +112,7 @@ export default class Weather {
 
     setInterval(() => {
       this.render(location);
-    }, 600000);
+    }, 600000); //10 min refresh
   }
 }
 
